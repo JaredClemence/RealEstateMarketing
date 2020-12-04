@@ -1,0 +1,71 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Nov 28, 2020, 6:59:15 PM
+    Author     : jaredclemence
+*/
+
+
+.text-disclosure {
+    position:relative;
+    box-sizing: border-box;
+    font-size: 12px;
+    margin: 70px;
+    color: black;
+    text-align: center;
+}
+
+.billy-gene{
+    color: black;
+    h1 { color: black; }
+    @media screen and (max-width:800px){
+        h1 { 
+            font-size: 26px; 
+        }
+    }
+
+    .no-spam-message-area {
+        text-align: center;
+        font-size:14px;
+    }
+
+    .button-area {
+        margin: 1rem;
+    }
+
+    .floating-invite {
+        position:relative;
+        font-size: 16px;
+        color: white;
+        box-sizing:border-box;
+
+        .outer-box {
+            margin: 0px;
+            box-sizing:border-box;
+            border-radius: 20px;
+            background: rgba(0,0,0,0.5);
+            padding: 2rem;
+        }
+
+        h1 { color: white; }
+
+        @media screen and (min-width:800px) {
+            margin-top:1rem;
+            width: 50%;
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            .outer-box {
+                box-sizing:border-box;
+                border-radius: 20px;
+                background: rgba(0,0,0,0.5);
+                padding: 2rem;
+            }
+        }
+
+
+    }
+}

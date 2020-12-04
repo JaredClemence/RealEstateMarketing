@@ -1,0 +1,1 @@
+<x-billy-gene.landing :property="$property" :title="$title"></x-billy-gene.landing>
