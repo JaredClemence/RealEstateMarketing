@@ -1,5 +1,5 @@
 <x-bootstrap-page pageTitle="Properties Creater">
-    <form method="POST">
+    <form method="POST" action='{{route('properties.create',compact('property'))}}'>
             <div class="container">
         <div class="row">
                 <div class="col-12"><h1>New Property (Admins Only)</h1>
