@@ -60,7 +60,7 @@ extract($data, \EXTR_OVERWRITE);
                 </div>
             <div class='col-12 col-md-6 offset-md-3'>
                 <br/><br/>
-                <button type='submit' class='btn btn-primary btn-block'>Create Property</button>
+                <button type='submit' class='btn btn-primary btn-block'>Save Property Changes</button>
                 <br/><br/>
             </div>
         </div>
