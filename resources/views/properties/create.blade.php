@@ -4,6 +4,7 @@
         <div class="row">
                 <div class="col-12"><h1>New Property (Admins Only)</h1>
                     @csrf
+                    @method('POST')
                 </div>
             <div class="col-12 col-md-6">
                     <h2>Address</h2>

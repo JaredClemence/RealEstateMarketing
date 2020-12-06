@@ -31,7 +31,7 @@ TEXT;
                 'sqft' => "1680",
                 "image1" => "image1.jpg",
                 "image2" => "image2.jpg",
-                "teaser_prompt" => "Do you want to see the inside of this beautifully remodeled house?",
+                "teaser_prompt" => "Do you want to see the inside of this beautifully modernized house?",
                 "teaser_text" => $text,
             'virtual_embed'=>''
     ];
