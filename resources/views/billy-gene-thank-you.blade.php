@@ -1,7 +1,7 @@
 @push('style')
 <style>
     .property-image-back {
-        background-image: url({{asset($property->image1)}});
+        background-image: url({{asset($property->image2)}});
         background-size: cover;
         min-height: 600px;
         padding: 200px;
