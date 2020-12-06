@@ -13,9 +13,21 @@ use Illuminate\Support\Facades\Route;
   |
  */
 use App\Models\Property;
+use Illuminate\Http\Request;
+use PiedWeb\TextSpinner\Spinner;
 
 Route::get('/', function() {
     return redirect('/offers/1');
+});
+
+Route::get('/spin-text', function(){
+    $spintext = ''; $spuntext ='';
+    return view('spinner', compact('spintext','spuntext'));
+});
+Route::post('/spin-text', function(Request $request){
+    $spintext = $request->spintext; $spuntext ='';
+    $spuntext = Spinner::spin($spintext);
+    return view('spinner', compact('spintext','spuntext'));
 });
 
 Route::resource('properties', \App\Http\Controllers\PropertyController::class, [

@@ -16,6 +16,7 @@ use App\Models\Lead;
  * @property string $sqft
  * @property string $image1
  * @property string $image2
+ * @property string $brochure
  * 
  */
 class Property extends Model
@@ -26,16 +27,17 @@ class Property extends Model
         'status',
         'status_date',
         'address',
-                'city',
-                'state',
-                'zip',
-                'beds',
-                'baths',
-                'sqft',
-                "image1",
-                "image2",
-                "teaser_prompt",
-                "teaser_text"
+        'city',
+        'state',
+        'zip',
+        'beds',
+        'baths',
+        'sqft',
+        "image1",
+        "image2",
+        "teaser_prompt",
+        "teaser_text",
+        "brochure"
     ];
     
     public function leads(){

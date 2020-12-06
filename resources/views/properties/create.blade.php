@@ -33,6 +33,7 @@
                         <textarea class='form-control'></textarea>
                     </div>
                     <x-form-text-input type="file" name="image2">Image Page 2</x-form-text-inupt>
+                    <x-form-text-input type="file" name="brochure">eBrochure</x-form-text-input>
                     <hr class="d-xs-block d-md-none"/>
                 </div>
             <div class='col-12 col-md-6 offset-md-3'>

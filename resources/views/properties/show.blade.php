@@ -45,6 +45,12 @@
                     </div>
                         <h5>Image Page 2</h5>
                         <img src='{{asset($property->image2)}}' class="img img-fluid" /></span>
+            <h5>eBrochure</h5>
+            @if( $property->brochure )
+            <embed src="{{asset($property->brochure)}}" width="100%" height="500" />
+            @else
+            <p>None</p>
+            @endif
                     <hr class="d-xs-block d-md-none"/>
                 </div>
             <div class='col-12 col-md-6 offset-md-3'>

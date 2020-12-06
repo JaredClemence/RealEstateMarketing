@@ -37,7 +37,9 @@ class PropertyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $property = new Property();
+        $this->update($request, $property);
+        return redirect()->route('property.show',compact('property')); 
     }
 
     /**
@@ -82,8 +84,6 @@ class PropertyController extends Controller
             'teaser_text',
             'teaser_prompt'
         ];
-        $image1 = '';
-        $image2 = '';
         if( $request->hasFile('image1')){
             $image1 = $request->image1->store('images','public');
             $property->image1 = $image1;
@@ -91,6 +91,10 @@ class PropertyController extends Controller
         if( $request->hasFile('image2')){
             $image2 = $request->image2->store('images','public');
             $property->image2 = $image2;
+        }
+        if( $request->hasFile('brochure') ){
+            $brochure = $request->brochure->store('pdfs','public');
+            $property->brochure = $brochure;
         }
         $data = $request->all($keys);
         $property->fill( $data );
