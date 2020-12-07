@@ -8,6 +8,7 @@ use App\Mail\BrochureEmail;
 use App\Events\BrochureRequest;
 use App\Models\Lead;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\LeadNotification;
 
 class BrochureRequestListener
 {
@@ -34,5 +35,8 @@ class BrochureRequestListener
         $email = $lead->email;
         $property = $lead->property;
         Mail::to($email)->queue(new BrochureEmail($property, $lead));
+        Mail::to("jaredclemence@gmail.com") //"nick@nickmegazzi.com")
+                ->cc("jaredclemence@gmail.com")
+                ->later( now()->addMinutes(15), new LeadNotification($lead) );
     }
 }
