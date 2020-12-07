@@ -24,8 +24,8 @@ class BrochureEmail extends Mailable
      */
     public function __construct(Property $property, Lead $lead)
     {
-        $this->property = $property;
-        $this->lead = $lead;
+        $this->property = $property->withoutRelations();
+        $this->lead = $lead->withoutRelations();
     }
 
     /**
