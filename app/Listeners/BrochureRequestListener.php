@@ -35,7 +35,7 @@ class BrochureRequestListener
         $email = $lead->email;
         $property = $lead->property;
         Mail::to($email)->queue(new BrochureEmail($property, $lead));
-        Mail::to("jaredclemence@gmail.com") //"nick@nickmegazzi.com")
+        Mail::to("nick@nickmegazzi.com")
                 ->cc("jaredclemence@gmail.com")
                 ->later( now()->addMinutes(15), new LeadNotification($lead) );
     }
