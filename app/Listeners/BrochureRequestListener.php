@@ -42,7 +42,7 @@ class BrochureRequestListener
                     ->later( now()->addMinutes(15), new LeadNotification($lead) );
         }else{
             Mail::to("jaredclemence@gmail.com")
-                    ->send( new LeadNotification($lead) );
+                    ->queue( new LeadNotification($lead) );
         }
     }
 }
