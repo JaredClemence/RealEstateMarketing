@@ -17,16 +17,22 @@ abstract class AbstractLeadMailer extends Mailable
     public $lead;
     /* @var $property Property */
     public $property;
+    public $type;
+    public $description;
+    public $mail_id;
     
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(Lead $lead)
+    public function __construct(Lead $lead, $type, $description)
     {
         $this->lead = $lead->withoutRelations();
         $this->property = $lead->property->withoutRelations();
+        $this->type = $type;
+        $this->description = $description;
+        $this->mail_id = md5( $lead->id . $this->makeSubjectLine() . now()->format('r'));
     }
 
     /**
@@ -35,6 +41,8 @@ abstract class AbstractLeadMailer extends Mailable
      * @return $this
      */
     abstract public function build();
+    
+    abstract protected function makeSubjectLine();
     
     protected function buildAddress(){
         $street = $this->property->address;

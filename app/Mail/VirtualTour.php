@@ -10,6 +10,11 @@ use App\Mail\AbstractLeadMailer;
 
 class VirtualTour extends AbstractLeadMailer
 {
+    public function __construct(Lead $lead) {
+        $type = "VIRTUAL_TOUR_EMAIL";
+        $description = "An email with a link to the 3D virtual tour.";
+        parent::__construct($lead, $type, $description);
+    }
 
     /**
      * Build the message.
@@ -18,9 +23,15 @@ class VirtualTour extends AbstractLeadMailer
      */
     public function build()
     {
-        $formattedAddress = $this->buildAddress();
+        $subject = $this->makeSubjectLine();
         return $this->to($this->recipient)
-                ->subject("[Virtual Tour] $formattedAddress")
+                ->subject($subject)
                 ->text('emails.virtual-tour');
     }
+
+    protected function makeSubjectLine() {
+        $formattedAddress = $this->buildAddress();
+        return "[Virtual Tour] $formattedAddress";
+    }
+
 }

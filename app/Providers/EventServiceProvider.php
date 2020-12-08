@@ -8,6 +8,11 @@ use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvi
 use Illuminate\Support\Facades\Event;
 use App\Events\BrochureRequest;
 use App\Listeners\BrochureRequestListener;
+use App\Events\EmailOpenedEvent;
+use App\Events\LinkFollowedEvent;
+use App\Listeners\InteractionListener;
+use Illuminate\Mail\Events\MessageSent;
+use App\Listeners\RecordMailToLeads;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -21,7 +26,16 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class,
         ],
         BrochureRequest::class => [
-            BrochureRequestListener::class
+            BrochureRequestListener::class,
+        ],
+        EmailOpenedEvent::class => [
+            InteractionListener::class,
+        ],
+        LinkFollowedEvent::class => [
+            InteractionListener::class,
+        ],
+        MessageSent::class => [
+            RecordMailToLeads::class,
         ],
     ];
 

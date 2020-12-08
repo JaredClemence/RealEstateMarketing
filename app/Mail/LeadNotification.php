@@ -29,7 +29,10 @@ class LeadNotification extends AbstractLeadMailer
      */
     public function __construct(Lead $lead)
     {
-        parent::__construct($lead);
+        $type = "ADMIN_NOTICE_NEW_LEAD";
+        $description = "An email with details about the new lead.";
+        parent::__construct($lead, $type, $description);
+        
         $property = $lead->property;
         /* @var $property Property */
         $this->name = $lead->name;
@@ -51,4 +54,9 @@ class LeadNotification extends AbstractLeadMailer
         $agentName = $_ENV['AGENT_NAME'];
         return $this->text('emails.lead-notice')->with(compact('agentName'));
     }
+
+    protected function makeSubjectLine() {
+        return 'Lead Notification';
+    }
+
 }
