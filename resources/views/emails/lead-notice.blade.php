@@ -1,4 +1,4 @@
-Nick:
+{{$agentName}}:
 
 We have a new lead looking into {{$address}} in {{$city}}, {{$state}} {{$zip}}. The lead received a copy of the brochure 15 minutes ago and is likely ready to receive a follow-up phone call.
 

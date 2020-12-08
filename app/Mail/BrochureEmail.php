@@ -8,25 +8,10 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Property;
 use App\Models\Lead;
+use App\Mail\AbstractLeadMailer;
 
-class BrochureEmail extends Mailable
+class BrochureEmail extends AbstractLeadMailer
 {
-    use Queueable, SerializesModels;
-
-    /* @var $property Property */
-    public $property;
-    /* @var $lead Lead */
-    public $lead;
-    /**
-     * Create a new message instance.
-     *
-     * @return void
-     */
-    public function __construct(Property $property, Lead $lead)
-    {
-        $this->property = $property->withoutRelations();
-        $this->lead = $lead->withoutRelations();
-    }
 
     /**
      * Build the message.

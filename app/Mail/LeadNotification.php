@@ -8,10 +8,10 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Lead;
 use App\Models\Property;
+use App\Mail\AbstractLeadMailer;
 
-class LeadNotification extends Mailable
+class LeadNotification extends AbstractLeadMailer
 {
-    use Queueable, SerializesModels;
 
     public $name;
     public $phone;
@@ -29,6 +29,7 @@ class LeadNotification extends Mailable
      */
     public function __construct(Lead $lead)
     {
+        parent::__construct($lead);
         $property = $lead->property;
         /* @var $property Property */
         $this->name = $lead->name;
@@ -47,6 +48,7 @@ class LeadNotification extends Mailable
      */
     public function build()
     {
-        return $this->text('emails.lead-notice');
+        $agentName = $_ENV['AGENT_NAME'];
+        return $this->text('emails.lead-notice')->with(compact('agentName'));
     }
 }
