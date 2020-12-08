@@ -19,9 +19,10 @@
         <link rel="stylesheet" href="{{asset('css/marketing.css')}}" >
         @endpush
         @stack('style')
-        
+        <x-gtag-header></x-gtag-header>
     </head>
     <body class="antialiased">
+        <x-gtag-body></x-gtag-body>
         {{$slot}}
         @push('scripts')
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
