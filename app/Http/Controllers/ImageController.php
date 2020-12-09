@@ -9,6 +9,10 @@ use App\Events\EmailOpenedEvent;
 
 class ImageController extends Controller
 {
+    public function serveGoogleFriendly( Request $request, $security, $filePath ){
+        return $this->serve($request,$filePath);
+    }
+    
     public function serve(Request $request, $filePath){
         if( $request->has('security') && !$request->has('testing') ){
             $this->processKey( $request->security );

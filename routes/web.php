@@ -37,6 +37,9 @@ Route::get('/private/test', function(){ return route('image',['filePath'=>'image
 Route::get('/private/{filePath}', [App\Http\Controllers\ImageController::class,'serve'])
         ->where(['filePath' => '.*'])
     ->name('image');
+Route::get('/secure/{security}/{filePath}', [App\Http\Controllers\ImageController::class,'serveGoogleFriendly'])
+        ->where(['filePath' => '.*'])
+    ->name('imageGoogleFriendly');
 Route::resource('properties', \App\Http\Controllers\PropertyController::class, [
     'names' => [
         'index' => 'property.index',
