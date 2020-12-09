@@ -29,7 +29,10 @@ Route::post('/spin-text', function(Request $request){
     $spuntext = Spinner::spin($spintext);
     return view('spinner', compact('spintext','spuntext'));
 });
-
+Route::get('/private/test', function(){ return route('image',['filePath'=>'images/bg01.jpg','security=010101']); });
+Route::get('/private/{filePath}', [App\Http\Controllers\ImageController::class,'serve'])
+        ->where(['filePath' => '.*'])
+    ->name('image');
 Route::resource('properties', \App\Http\Controllers\PropertyController::class, [
     'names' => [
         'index' => 'property.index',
@@ -41,7 +44,7 @@ Route::resource('properties', \App\Http\Controllers\PropertyController::class, [
     ]
 ]);
 Route::prefix('/offers/{property}')->group(function() {
-    
+    Route::middleware([\App\Http\Middleware\TrackUse::class])->group(function(){
     Route::get('/', function(Property $property) {
         $title = $property->address;
         return view('billy-gene-landing', compact('property', 'title'));
@@ -61,4 +64,5 @@ Route::prefix('/offers/{property}')->group(function() {
             'destroy'=>'leads.delete'
         ]
     ]);
+    });
 });
