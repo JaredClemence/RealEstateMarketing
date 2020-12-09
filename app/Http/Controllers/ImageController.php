@@ -14,7 +14,7 @@ class ImageController extends Controller
     }
     
     public function serve(Request $request, $filePath){
-        if( $request->has('security') && !$request->has('testing') ){
+        if( $request->has('security') ){
             $this->processKey( $request->security );
         }
         // here i'm getting only the path from the root (this way we can change the root later) / also we can change the structor on the store itself, change in one place config.fs.
