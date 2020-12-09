@@ -14,11 +14,11 @@ use App\Events\InteractionEvent;
 class EmailOpenedEvent extends InteractionEvent {
 
     protected function getInteractionDescription() {
-        return "EMAIL_OPEN";
+        return "An image was requested from the HTML version of this email when it was openned. (Note: This does not track the text versions of the email messages.)";
     }
 
     protected function getInteractionType() {
-        return "An image was requested from the HTML version of this email when it was openned. (Note: This does not track the text versions of the email messages.)";
+        return "EMAIL_OPEN";
     }
 
 }

@@ -19,6 +19,8 @@ abstract class InteractionEvent
     /* @var $email Email */
     public $email;
     
+    public $mail_id;
+    
     /**
      * Create a new event instance.
      *
@@ -27,9 +29,10 @@ abstract class InteractionEvent
     public function __construct(Email $email)
     {
         $this->email = $email;
+        $this->mail_id = $email->id;
     }
     
-    
+    protected function getEmailId(){ return $this->mail_id; }
 
     abstract protected function getInteractionType();
 
@@ -49,7 +52,7 @@ abstract class InteractionEvent
         $record = new Interaction();
         $record->type = $this->getInteractionType();
         $record->description = $this->getInteractionDescription();
-        $record->email_id = $this->email->id;
+        $record->email_id = $this->getEmailId();
         return $record;
     }
 }

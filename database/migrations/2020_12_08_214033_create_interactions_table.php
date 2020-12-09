@@ -16,7 +16,7 @@ class CreateInteractionsTable extends Migration
         Schema::create('interactions', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('email_id');
+            $table->string('email_id',33);
             $table->string('type');
             $table->string('description');
         });
