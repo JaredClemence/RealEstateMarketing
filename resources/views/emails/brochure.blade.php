@@ -2,7 +2,7 @@
     <x-email.paragraph-text>Dear {{$name}}:</x-email.paragraph-text><x-email.paragraph-text>&nbsp;</x-email.paragraph-text>
     <x-email.paragraph-text>Thank you for requesting an eBrochure. Property ownership is the key to growing true wealth. This is an exciting journey that you have begun, and I am happy to help in any way that I can.</x-email.paragraph-text>
     <x-email.paragraph-text>&nbsp;</x-email.paragraph-text>
-    <x-email.paragraph-text>Find your eBrochure regarding {{$address}} in {{$city}}, {{$state}} {{$zip}},a attached to this email. Look it over, and call me if you have any questions. I will have one of my associates call you sometime today or tomorrow to see if there are any questions that we can answer, or if there is any way that we can help you find a property that is even better for you than this one.</x-email.paragraph-text>
+    <x-email.paragraph-text>Find your eBrochure regarding {{$address}} in {{$city}}, {{$state}} {{$zip}}, attached to this email. Look it over, and call me if you have any questions. I will have one of my associates call you sometime today or tomorrow to see if there are any questions that we can answer, or if there is any way that we can help you find a property that is even better for you than this one.</x-email.paragraph-text>
     <x-email.paragraph-text>&nbsp;</x-email.paragraph-text>
     <x-email.paragraph-text>Sincerely,</x-email.paragraph-text>
     <x-email.paragraph-text>&nbsp;</x-email.paragraph-text>
