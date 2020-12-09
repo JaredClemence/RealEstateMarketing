@@ -20,6 +20,7 @@ abstract class AbstractLeadMailer extends Mailable
     public $type;
     public $description;
     public $mail_id;
+    public $testing;
     
     /**
      * Create a new message instance.
@@ -33,6 +34,7 @@ abstract class AbstractLeadMailer extends Mailable
         $this->type = $type;
         $this->description = $description;
         $this->mail_id = md5( $lead->id . $this->makeSubjectLine() . now()->format('r'));
+        $this->testing = false;
     }
 
     /**
@@ -50,5 +52,10 @@ abstract class AbstractLeadMailer extends Mailable
         $state = $this->property->state;
         $zip = $this->property->zip;
         return "{$street}; $city, $state $zip";
+    }
+    
+    public function activateTestViews(){
+        $this->testing = true;
+        return $this;
     }
 }

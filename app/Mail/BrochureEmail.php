@@ -27,7 +27,8 @@ class BrochureEmail extends AbstractLeadMailer
     {
         $subject = $this->makeSubjectLine();
         $viewData = $this->getViewData();
-        return $this->text('emails.brochure')
+        return $this->view('emails.brochure')
+                ->text('emails.text.brochure')
                 ->with($viewData)
                 ->attach(public_path($this->property->brochure), ['as'=>'brochure.pdf', 'mime/type'=>'pdf'])
                 ->subject($subject);

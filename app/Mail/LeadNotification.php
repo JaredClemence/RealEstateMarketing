@@ -52,7 +52,7 @@ class LeadNotification extends AbstractLeadMailer
     public function build()
     {
         $agentName = $_ENV['AGENT_NAME'];
-        return $this->text('emails.lead-notice')->with(compact('agentName'));
+        return $this->view('emails.lead-notice')->text('emails.text.lead-notice')->with(compact('agentName'));
     }
 
     protected function makeSubjectLine() {
