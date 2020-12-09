@@ -35,14 +35,22 @@ class BrochureRequestListener
         $email = $lead->email;
         $property = $lead->property;
         $agentEmail = $_ENV['AGENT_EMAIL'];
+        \Illuminate\Support\Facades\Log::debug('Sending brochure email.');
         Mail::to($email)->queue(new BrochureEmail($lead));
-        if( strpos( "TEST", $lead->name ) === false ){
+        \Illuminate\Support\Facades\Log::debug('Preparing agent notification email.');
+        \Illuminate\Support\Facades\Log::debug('Lead name: ' . $lead->name);
+        
+        \Illuminate\Support\Facades\Log::debug('str_pos (TEST): ' . strpos( $lead->name, "TEST" ));
+        \Illuminate\Support\Facades\Log::debug('Mailer Test result: ' . (strpos( $lead->name, "TEST" ) === false?'true':'false'));
+        if( strpos( $lead->name, "TEST" ) === false ){
+            \Illuminate\Support\Facades\Log::debug('Using production path with 15 minute delay.');
             Mail::to($agentEmail)
                     ->cc("jaredclemence@gmail.com")
                     ->later( now()->addMinutes(15), new LeadNotification($lead) );
         }else{
+            \Illuminate\Support\Facades\Log::debug('Using test path with zero delay.');
             Mail::to("jaredclemence@gmail.com")
-                    ->queue( new LeadNotification($lead) );
+                    ->send( new LeadNotification($lead) );
         }
     }
 }
