@@ -9,6 +9,7 @@ use App\Events\BrochureRequest;
 use App\Models\Lead;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\LeadNotification;
+use App\Mail\VirtualTour;
 
 class BrochureRequestListener
 {
@@ -37,6 +38,8 @@ class BrochureRequestListener
         $agentEmail = $_ENV['AGENT_EMAIL'];
         \Illuminate\Support\Facades\Log::debug('Sending brochure email.');
         Mail::to($email)->queue(new BrochureEmail($lead));
+        Mail::to($email)->later(now()->addMinutes(5), new VirtualTour($lead));
+        
         \Illuminate\Support\Facades\Log::debug('Preparing agent notification email.');
         \Illuminate\Support\Facades\Log::debug('Lead name: ' . $lead->name);
         
