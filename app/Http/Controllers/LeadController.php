@@ -8,6 +8,8 @@ use App\Models\Property;
 use App\Http\Requests\NewLeadRequest;
 use App\Events\NewRegistration;
 use App\Events\BrochureRequest;
+use Exception;
+use Illuminate\Support\Facades\Log;
 
 class LeadController extends Controller
 {
@@ -57,10 +59,20 @@ class LeadController extends Controller
      */
     public function store(NewLeadRequest $request, Property $property)
     {
-        $all = $request->all(['name','email','phone']);
-        \extract( $all );
-        $lead = $this->makeLead($property, $name, $email, $phone);
-        BrochureRequest::dispatch($lead);
+        try{
+            Log::info("Lead Controller started store process.");
+            $all = $request->all(['name','email','phone']);
+            \extract( $all );
+            $lead = $this->makeLead($property, $name, $email, $phone);
+            Log::info("Lead created.");
+            BrochureRequest::dispatch($lead);
+            Log::info("Brochure request event dispatched.");
+        }catch( Exception $e ){
+            Log::error("Exception Message: " . $e->getMessage());
+            Log::error("Exception Code: " . $e->getCode());
+            Log::error("Exception Trace:\n" . $e->getTraceAsString());
+            return back();
+        }
         return redirect()->route('offer.thanks',compact('property'));
     }
 
