@@ -9,17 +9,14 @@ use App\Models\Property;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Queue;
 use App\Mail\BrochureEmail;
+use Illuminate\Testing\TestResponse;
+use App\Mail\LeadNotification;
 
 class RequestBrochure extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
     
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
     public function testLoadOfferPage()
     {
         $property = Property::factory()->create();
@@ -30,9 +27,6 @@ class RequestBrochure extends TestCase
         return [$property];
     }
     
-    /**
-     * @depends testLoadOfferPage
-     */
     public function testPostLeadData(){
         Mail::fake();
         $property = Property::factory()->create();
@@ -46,27 +40,42 @@ class RequestBrochure extends TestCase
         return [$property];
     }
     
-    /**
-     * @depends testLoadOfferPage
-     */
     public function testSubmitRequest(){
         Mail::fake();
         $property = Property::factory()->create();
         $response = $this->submitFakeData($property);
-        $this->assertThankYouPageLoaded($property, $response);
+        $response->assertStatus(302);
+    }
+    
+    public function testBrochureEmailSent(){
+        Mail::fake();
+        $property = Property::factory()->create();
+        $response = $this->submitFakeData($property);
         $this->assertMailSent($property, $response);
     }
-
+    public function testNewLeadEmailSentToAgent(){
+        Mail::fake();
+        $property = Property::factory()->create();
+        $response = $this->submitFakeData($property);
+        Mail::assertQueued(LeadNotification::class);
+    }
+    public function testUserSeesThankYouPage(){
+        Mail::fake();
+        $property = Property::factory()->create();
+        $response = $this->submitFakeData($property);
+        $this->assertThankYouPageLoaded($property, $response);
+    }
     protected function submitFakeData(Property $property) {
         $data = $this->getLeadData();
         $url = $this->getLeadCreationUrl($property);
         $response = $this->post($url, $data);
-        $response->assertStatus(302);
         return $response;
     }
 
     protected function assertThankYouPageLoaded(Property $property, $response) {
-        
+        /* @var $response TestResponse */
+        $uri = $this->getThankYouUri($property);
+        $response->assertRedirect($uri);
     }
 
     protected function assertMailSent(Property $property, $response) {
@@ -91,6 +100,10 @@ class RequestBrochure extends TestCase
             'phone'=>$this->faker->phoneNumber
         ];
         return $data;
+    }
+
+    protected function getThankYouUri($property) {
+        return route('offer.thanks',compact('property'));
     }
 
 }
