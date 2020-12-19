@@ -82,7 +82,9 @@ class PropertyController extends Controller
             'baths',
             'zip',
             'teaser_text',
-            'teaser_prompt'
+            'teaser_prompt',
+            'virtual_tour',
+            'virtual_embed',
         ];
         if( $request->hasFile('image1')){
             $image1 = $request->image1->store('images','public');

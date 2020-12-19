@@ -8,7 +8,9 @@ $data = [
 'baths',
 'sqft',
 'teaser_text',
-'teaser_prompt'
+'teaser_prompt',
+'virtual_tour',
+'virtual_embed',
 ];
 foreach($data as $value ){
     if( session($value) ){
@@ -56,6 +58,13 @@ extract($data, \EXTR_OVERWRITE);
                     </div>
                     <x-form-text-input type="file" name="image2">Image Page 2</x-form-text-inupt>
                     <x-form-text-input type="file" name="brochure">eBrochure</x-form-text-input>
+                    <x-form-text-input type="text" name="virtual_tour" value='{{$virtual_tour}}'>Virtual Tour URI</x-form-text-input>
+                    <div class='form-group'>
+                        <label for='virtual_embed'>
+                            Virtual Embed Code:
+                        </label>
+                        <textarea class='form-control' name='virtual_embed'>{{$virtual_embed}}</textarea>
+                    </div>
                     <hr class="d-xs-block d-md-none"/>
                 </div>
             <div class='col-12 col-md-6 offset-md-3'>

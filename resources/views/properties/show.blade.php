@@ -53,6 +53,17 @@
             @endif
                     <hr class="d-xs-block d-md-none"/>
                 </div>
+            <div class='col-12 col-md-6'>
+                    <h2>Virtual Tour</h2>
+                    <span>Url: {{$property->virtual_tour}}</span><br/>
+                    <span>Embed Text:</span>
+                    @if($property->virtual_embed)
+                    {!!$property->virtual_embed!!}
+                    @else
+                    No Embed Code
+                    @endif
+                    <hr class="d-xs-block d-md-none"/>
+                </div>
             <div class='col-12 col-md-6 offset-md-3'>
                 <br/><br/>
                 <a href='{{route('property.edit',compact('property'))}}' class='btn btn-primary btn-block'>Edit Property</a>

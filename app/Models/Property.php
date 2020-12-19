@@ -17,6 +17,8 @@ use App\Models\Lead;
  * @property string $image1
  * @property string $image2
  * @property string $brochure
+ * @property string $virtual_embed
+ * @property string $virtual_tour
  * 
  */
 class Property extends Model
@@ -37,7 +39,9 @@ class Property extends Model
         "image2",
         "teaser_prompt",
         "teaser_text",
-        "brochure"
+        "brochure",
+        "virtual_embed",
+        "virtual_tour",
     ];
     
     public function leads(){
