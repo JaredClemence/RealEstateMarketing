@@ -25,8 +25,8 @@ Route::get('/spin-text', function(){
     return view('spinner', compact('spintext','spuntext'));
 });
 Route::get('/mail-test', function(){
-    $lead = \App\Models\Lead::first();
-    return (new App\Mail\LeadNotification($lead))->activateTestViews();
+    $lead = \App\Models\Lead::factory()->create();
+    return (new App\Mail\VirtualTour($lead))->activateTestViews();
 } );
 Route::post('/spin-text', function(Request $request){
     $spintext = $request->spintext; $spuntext ='';

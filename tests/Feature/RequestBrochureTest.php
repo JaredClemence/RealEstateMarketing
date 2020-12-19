@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Queue;
 use App\Mail\BrochureEmail;
 use Illuminate\Testing\TestResponse;
 use App\Mail\LeadNotification;
+use App\Mail\VirtualTour;
 
 class RequestBrochure extends TestCase
 {
@@ -64,6 +65,12 @@ class RequestBrochure extends TestCase
         $property = Property::factory()->create();
         $response = $this->submitFakeData($property);
         $this->assertThankYouPageLoaded($property, $response);
+    }
+    public function testVirtualTourEmailSent(){
+        Mail::fake();
+        $property = Property::factory()->create();
+        $response = $this->submitFakeData($property);
+        Mail::assertQueued(VirtualTour::class);
     }
     protected function submitFakeData(Property $property) {
         $data = $this->getLeadData();
