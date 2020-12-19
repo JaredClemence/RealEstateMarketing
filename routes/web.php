@@ -24,8 +24,10 @@ Route::get('/spin-text', function(){
     $spintext = ''; $spuntext ='';
     return view('spinner', compact('spintext','spuntext'));
 });
-Route::get('/mail-test', function(){
+Route::get('/mail-test/{property}', function(Property $property){
     $lead = \App\Models\Lead::factory()->create();
+    $lead->property_id = $property->id;
+    $lead->save();
     return (new App\Mail\VirtualTour($lead))->activateTestViews();
 } );
 Route::post('/spin-text', function(Request $request){

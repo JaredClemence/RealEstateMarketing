@@ -6,7 +6,7 @@
     <x-email.paragraph-text>&nbsp;</x-email.paragraph-text>
     <x-email.paragraph-text>Tour {{$property->address}} in {{$property->city}}, {{$property->state}} {{$property->zip}}, by clicking the link below.</x-email.paragraph-text>
     <x-email.paragraph-text>&nbsp;</x-email.paragraph-text>
-    <x-email.paragraph-text><a href='{{$virtualTourUri}}' class='btn btn-primary'>Click to Take Virtual Tour</a></x-email.paragraph-text>
+    <x-email.paragraph-text><a href='{{$property->virtual_tour}}' class='btn btn-primary'>Click to Take Virtual Tour</a></x-email.paragraph-text>
     <x-email.paragraph-text>&nbsp;</x-email.paragraph-text>
     <x-email.paragraph-text>Sincerely,</x-email.paragraph-text>
     <x-email.paragraph-text>&nbsp;</x-email.paragraph-text>

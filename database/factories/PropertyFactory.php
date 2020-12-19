@@ -32,6 +32,7 @@ class PropertyFactory extends Factory {
             'sqft' => rand(1000, 2500),
             "teaser_prompt" => "Download this eBrochure",
             "teaser_text" => "Thank you for downloading this eBrochure",
+            'virtual_tour'=>'https://www.zillow.com/view-3d-home/411161b0-0d23-4f2e-b0e9-8c0b2d679760',
             'virtual_embed'=>''
         ];
     }
