@@ -49,7 +49,8 @@ Route::resource('properties', \App\Http\Controllers\PropertyController::class, [
         'edit' => 'property.edit',
         'create' => 'property.create',
         'update' => 'property.update',
-        'destroy'=>'property.delete'
+        'destroy'=>'property.delete',
+        'store' =>'property.store',
     ]
 ]);
 Route::prefix('/offers/{property}')->group(function() {
