@@ -14,8 +14,8 @@ class PropertyChange extends Migration {
     public function up() {
         Schema::table('properties', function (Blueprint $table) {
             $table->dropColumn('virtual_embed');
-            $table->string('referral_agent_name');
-            $table->string('referral_agent_email');
+            $table->string('referral_agent_name')->default('Jared');
+            $table->string('referral_agent_email')->default('jaredclemence@gmail.com');
         });
     }
 
