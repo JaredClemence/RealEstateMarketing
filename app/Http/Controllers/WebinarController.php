@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Webinar;
 use Illuminate\Http\Request;
+use App\Models\Property;
 
 class WebinarController extends Controller
 {
@@ -22,9 +23,9 @@ class WebinarController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Property $property)
     {
-        //
+        return view('webinar.create',compact('property'));
     }
 
     /**
@@ -33,9 +34,18 @@ class WebinarController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Property $property)
     {
-        //
+        $data = $request->all([
+            'link',
+            'time',
+            'day_of_week'
+        ]);
+        $data['property_id']=$property->id;
+        $webinar = new Webinar();
+        $webinar->fill($data);
+        $webinar->save();
+        return redirect()->route('property.show', compact('property'));
     }
 
     /**
@@ -78,8 +88,9 @@ class WebinarController extends Controller
      * @param  \App\Models\Webinar  $webinar
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Webinar $webinar)
+    public function destroy(Webinar $webinar, Property $property)
     {
-        //
+        $webinar->delete();
+        return redirect()->route('property.show', compact('property'));
     }
 }

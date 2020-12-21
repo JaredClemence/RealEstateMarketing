@@ -20,6 +20,7 @@ class Webinar extends Model
         'link',
         'day_of_week',
         'time',
+        'property_id',
     ];
     
     protected $cast = [
