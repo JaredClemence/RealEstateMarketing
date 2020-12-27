@@ -54,6 +54,18 @@ class RequestBrochure extends TestCase
         $response = $this->submitFakeData($property);
         $this->assertMailSent($property, $response);
     }
+    public function testBrochureEmailSubjectContent(){
+        Mail::fake();
+        $property = Property::factory()->create();
+        $response = $this->submitFakeData($property);
+        Mail::assertQueued( function ( BrochureEmail $mailer ) {
+            /* @var $mailer VirtualTour */
+            $mailer->build();
+            $subject = $mailer->subject;
+            $pos = strpos($subject, "[eBrochure]");
+            return $pos === 0;
+        } );
+    }
     public function testNewLeadEmailSentToAgent(){
         Mail::fake();
         $property = Property::factory()->create();
@@ -71,6 +83,18 @@ class RequestBrochure extends TestCase
         $property = Property::factory()->create();
         $response = $this->submitFakeData($property);
         Mail::assertQueued(VirtualTour::class);
+    }
+    public function testVirtualTourEmailSubjectReadsVirtualTour(){
+        Mail::fake();
+        $property = Property::factory()->create();
+        $response = $this->submitFakeData($property);
+        Mail::assertQueued( function ( VirtualTour $mailer ) {
+            /* @var $mailer VirtualTour */
+            $mailer->build();
+            $subject = $mailer->subject;
+            $pos = strpos($subject, "[Virtual Tour]");
+            return $pos === 0;
+        } );
     }
     protected function submitFakeData(Property $property) {
         $data = $this->getLeadData();
