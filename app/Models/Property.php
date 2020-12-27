@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Lead;
+use App\Models\Webinar;
 
 /**
  * @property string $address
@@ -45,5 +46,9 @@ class Property extends Model
     
     public function leads(){
         return $this->hasMany(Lead::class);
+    }
+    
+    public function webinars(){
+        return $this->hasMany(Webinar::class);
     }
 }
