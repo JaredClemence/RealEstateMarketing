@@ -54,9 +54,13 @@ class WebinarController extends Controller
      * @param  \App\Models\Webinar  $webinar
      * @return \Illuminate\Http\Response
      */
-    public function show(Webinar $webinar)
+    public function show(Property $property, Webinar $webinar)
     {
-        //
+        $link = $webinar->link;
+        $link = "https://youtu.be/Jx71-WNVPqM";
+        $parts = explode('/', $link);
+        $video_id = array_pop($parts);
+        return view('webinar.show', compact('property','webinar','video_id'));
     }
 
     /**
