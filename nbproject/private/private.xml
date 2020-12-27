@@ -3,7 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/jaredclemence/git/marketing/tests/Feature/RequestBrochureTest.php</file>
+            <file>file:/Users/jaredclemence/git/marketing/app/Models/Property.php</file>
+            <file>file:/Users/jaredclemence/git/marketing/routes/web.php</file>
+            <file>file:/Users/jaredclemence/git/marketing/app/Http/Controllers/WebinarController.php</file>
+            <file>file:/Users/jaredclemence/git/marketing/app/Http/Controllers/PropertyController.php</file>
+            <file>file:/Users/jaredclemence/git/marketing/app/Models/Webinar.php</file>
+            <file>file:/Users/jaredclemence/git/marketing/resources/views/properties/edit.blade.php</file>
+            <file>file:/Users/jaredclemence/git/marketing/resources/views/properties/create.blade.php</file>
+            <file>file:/Users/jaredclemence/git/marketing/resources/views/webinar/create.blade.php</file>
+            <file>file:/Users/jaredclemence/git/marketing/resources/views/properties/show.blade.php</file>
+            <file>file:/Users/jaredclemence/git/marketing/database/migrations/2020_12_21_012611_property_change.php</file>
         </group>
     </open-files>
 </project-private>

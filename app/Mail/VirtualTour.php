@@ -30,7 +30,7 @@ class VirtualTour extends AbstractLeadMailer
         $subject = $this->makeSubjectLine();
         return $this->to($this->lead->email)
                 ->subject($subject)
-                ->text('emails.virtual-tour');
+                ->view('emails.virtual-tour');
     }
 
     protected function makeSubjectLine() {

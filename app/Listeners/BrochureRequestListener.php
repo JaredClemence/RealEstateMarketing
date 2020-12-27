@@ -38,7 +38,7 @@ class BrochureRequestListener
         $agentEmail = $_ENV['AGENT_EMAIL'];
         \Illuminate\Support\Facades\Log::debug('Sending brochure email.');
         Mail::to($email)->queue(new BrochureEmail($lead));
-        Mail::to($email)->later(now()->addMinutes(5), new VirtualTour($lead));
+        Mail::to($email)->later(now()->addMinutes(1), new VirtualTour($lead));
         
         \Illuminate\Support\Facades\Log::debug('Preparing agent notification email.');
         \Illuminate\Support\Facades\Log::debug('Lead name: ' . $lead->name);
