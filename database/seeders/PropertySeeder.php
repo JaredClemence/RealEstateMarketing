@@ -33,7 +33,6 @@ TEXT;
                 "image2" => "image2.jpg",
                 "teaser_prompt" => "Do you want to see the inside of this beautifully modernized house?",
                 "teaser_text" => $text,
-            'virtual_embed'=>''
     ];
         $property = Property::firstOrCreate( $data );
     }
