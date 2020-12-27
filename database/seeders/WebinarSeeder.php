@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Webinar;
+use App\Models\Property;
 
 class WebinarSeeder extends Seeder
 {
@@ -14,6 +15,12 @@ class WebinarSeeder extends Seeder
      */
     public function run()
     {
-        $webinars = Webinar::factory()->count(3)->create();
+        $property = Property::first();
+        if( $property ){
+            $id = $property;
+            Webinar::factory()->count(3)->create(['property_id'=>$id]);
+        }else{
+            $webinars = Webinar::factory()->count(3)->create();
+        }
     }
 }
