@@ -5,7 +5,7 @@
                 <h1>{{$property->address}}</h1>
                 <h3>Virtual Tour Walkthrough</h3>
                 <div style="min-height: 2rem;">&nbsp;</div>
-                <x-embed.youtube video_id="Jx71-WNVPqM"></x-embed.youtube>
+                <x-embed.youtube video_id="{{$video_id}}"></x-embed.youtube>
                 <div style="min-height: 2rem;">&nbsp;</div>
                 
             </div>
