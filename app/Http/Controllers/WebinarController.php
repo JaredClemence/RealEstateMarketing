@@ -88,7 +88,7 @@ class WebinarController extends Controller
      * @param  \App\Models\Webinar  $webinar
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Webinar $webinar, Property $property)
+    public function destroy(Property $property, Webinar $webinar)
     {
         $webinar->delete();
         return redirect()->route('property.show', compact('property'));

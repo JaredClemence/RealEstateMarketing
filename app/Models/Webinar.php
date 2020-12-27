@@ -23,8 +23,8 @@ class Webinar extends Model
         'property_id',
     ];
     
-    protected $cast = [
-        'time'=>'date',
+    protected $casts = [
+        'time'=>'datetime',
     ];
     
     public function property(){
