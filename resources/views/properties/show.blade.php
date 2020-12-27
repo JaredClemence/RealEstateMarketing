@@ -58,6 +58,14 @@
                 <span>Url: {{$property->virtual_tour}}</span><br/>
                 <hr class="d-xs-block d-md-none"/>
             </div>
+            <div class="col-12 col-md-6">
+                <h2>Webinars</h2>
+                <div class="list-group">
+                    @foreach($property->webinars as $webinar)
+                    <x-properties.webinar.list-item :webinar="$webinar"></x-properties.webinar.list-item>
+                    @endforeach
+                </div>
+            </div>
             <div class='col-12 col-md-6'>
                 <h2>Referral Agent</h2>
                 <span>Name: {{$property->referral_agent_name}}</span><br/>

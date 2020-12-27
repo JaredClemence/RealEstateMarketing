@@ -87,5 +87,6 @@ Route::prefix('/offers/{property}')->group(function() {
                 'destroy' => 'leads.delete'
             ]
         ]);
+        Route::get('/webinars/{webinar}', [App\Http\Controllers\WebinarController::class,'show'])->name('public.webinar.show');
     });
 });
